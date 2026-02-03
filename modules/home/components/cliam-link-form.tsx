@@ -1,29 +1,31 @@
-"use client"
-import React from 'react'
+"use client";
+
+
 import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Check, Link, Loader2 } from "lucide-react";
-import { toast } from "sonner";
-import { useRouter } from 'next/navigation'
+
 import { checkProfileUsernameAvailability, claimUsername } from "@/modules/profile/actions";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const ClaimLinkForm = () => {
-      const router = useRouter();
-      const [origin, setOrigin] = useState("");
-      const [linkValue, setLinkValue] = useState("");
-      const [isChecking, setIsChecking] = useState(false);
-      const [isAvailable, setIsAvailable] = useState<boolean | null>(null);
-      const [suggestions, setSuggestions] = useState<string[]>([]);
-      const [isClaming, setIsClaiming] = useState(false);
+  const router = useRouter();
+  const [origin, setOrigin] = useState("");
+  const [linkValue, setLinkValue] = useState("");
+  const [isChecking, setIsChecking] = useState(false);
+  const [isAvailable, setIsAvailable] = useState<boolean | null>(null);
+  const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [isClaming, setIsClaiming] = useState(false);
 
-      useEffect(() => {
-        if(typeof window !== undefined){
-            setOrigin(window.location.origin)
-        }
-      },[]);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setOrigin(window.location.origin);
+    }
+  }, []);
 
-        useEffect(() => {
+  useEffect(() => {
     if (linkValue.trim()) {
       const timer = setTimeout(async () => {
         setIsChecking(true);
@@ -41,7 +43,6 @@ const ClaimLinkForm = () => {
       setSuggestions([]);
     }
   }, [linkValue]);
-
 
 
 
@@ -65,16 +66,16 @@ const ClaimLinkForm = () => {
     finally{
       setIsClaiming(false);
     }
+    
+   
   };
+  
 
+  const displayOrigin = origin
+    ? origin.replace("https://", "").replace("http://", "")
+    : "treebio.com";
 
-
-
-      const displayOrigin = origin
-      ? origin.replace("https://", "").replace("http://", "")
-      : "treebio.com";
-
-    return (
+  return (
     <div className="space-y-8 max-w-md mx-auto w-full">
       {/* Form */}
       <form

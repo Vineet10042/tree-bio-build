@@ -9,20 +9,22 @@ import { getCurrentUsername } from "@/modules/profile/actions";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
+export const dynamic = 'force-dynamic';
+
 export default async function Home() {
   const user = await onBoardUser();
   const profile = await getCurrentUsername();
-  
+
 
   if (!user.success) {
     return redirect("/sign-in");
   }
 
- 
-   
-  
 
- 
+
+
+
+
 
   return (
     <div className="min-h-screen ">
@@ -57,7 +59,7 @@ export default async function Home() {
                 </Link>
               )
             }
-           
+
           </div>
         </section>
 

@@ -265,7 +265,7 @@ export default function TreeBioProfile({ profileData }: TreeBioProfileProps) {
               <Button
                 key={link.id}
                 asChild
-                onClick={(event) => handleLinkClick(link.id, link.url, event)}
+                onClick={() => handleLinkClick(link.id)}
                 variant="outline"
                 className={`w-full h-14 text-base font-medium backdrop-blur-sm transition-all duration-200 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] group ${theme === "dark"
                   ? "border-zinc-600/40 bg-zinc-700/40 text-zinc-100 hover:bg-zinc-600/60 hover:border-zinc-500/60"
